@@ -2,6 +2,8 @@
 
 ### What are we building
 
+####
+
 * We will be building a REACT blog feed page and a profile page
 * The following images are of the finished design. The black diamond for this project will be to match the designs.
 
