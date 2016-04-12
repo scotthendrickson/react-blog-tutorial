@@ -1632,17 +1632,17 @@ const Profile = ({user, like, likeBlog, unLikeBlog}) => {
 
 ## Black Diamond:
 
-* Match the styles to the designs
-* Change the color or the heart icon when a blog is liked and unliked also update the count
+### Match the styles to the designs
+### Change the color or the heart icon when a blog is liked and unliked also update the count
 
 
 Good luck!
 
 
-## Contributions
+### Contributions
 If you see a problem or a typo, please fork, make the necessary changes, and create a pull request so we can review your changes and merge them into the master repo and branch.
 
-## Copyright
+### Copyright
 
 © DevMountain LLC, 2016. Unauthorized use and/or duplication of this material without express and written permission from DevMountain, LLC is strictly prohibited. Excerpts and links may be used, provided that full and clear credit is given to DevMountain with appropriate and specific direction to the original content.
 
