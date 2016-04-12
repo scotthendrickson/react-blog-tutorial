@@ -123,25 +123,30 @@ There are other systems you can use to work with React, but it's worth taking th
 
 * The webpack.config.js file is already completed and looks like this
 
-```javascript
+```
 
 module.exports = {
-  entry   : {entry point or array of entry points}
-, devtool : {options for devtool}
-, output  : {
-    filename : output filename
-  , path     : output path
-  }
-, module : {
-    loaders : [
-      {array of loaders here}
+  entry: "./app/App.js",
+  output: {
+    filename: "public/bundle.js"
+  },
+
+  module: {
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel',
+        query: {
+          presets: ['react', 'es2015']
+        }
+      },
+      {test: /\.css$/, loader: 'style!css', exclude: /node_modules/},
+      {test: /\.png$/, loader: 'url', exclude: /node_modules/}
     ]
   }
-, plugins : [{array of plugins here}]
-, resolve : {
-    extensions : [array of file extensions to resolve]
-  }
-}
+};
+
 ```
 
 Now, you should be able to run `webpack` without anything breaking!
