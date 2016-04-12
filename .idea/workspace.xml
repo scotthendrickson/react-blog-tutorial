@@ -27,8 +27,8 @@
       <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.07466064">
-              <caret line="1067" column="3" selection-start-line="1067" selection-start-column="3" selection-end-line="1067" selection-end-column="3" />
+            <state vertical-scroll-proportion="-0.3122172">
+              <caret line="1147" column="0" selection-start-line="1147" selection-start-column="0" selection-end-line="1147" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -510,7 +510,13 @@
       <option name="project" value="LOCAL" />
       <updated>1460498887467</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="test">
+      <created>1460499012626</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1460499012626</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -947,8 +953,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07466064">
-          <caret line="1067" column="3" selection-start-line="1067" selection-start-column="3" selection-end-line="1067" selection-end-column="3" />
+        <state vertical-scroll-proportion="-0.3122172">
+          <caret line="1147" column="0" selection-start-line="1147" selection-start-column="0" selection-end-line="1147" selection-end-column="0" />
           <folding />
         </state>
       </provider>

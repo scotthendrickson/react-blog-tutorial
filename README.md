@@ -1065,7 +1065,7 @@ export default PhotoGrid
 * Make sure you export this function or you will not be able to import it into another file
 
 
-```
+```javascript
 
 export function getPosts(){
  return axios.get(`http://localhost:8080/api/blogData`)
@@ -1080,7 +1080,8 @@ export function getPosts(){
 
 
 ```
- ####
+
+####
 
 
  ```javascript
@@ -1097,11 +1098,12 @@ export function getPosts (){
 
 };
 
- ```
+```
 
 
 
 ### getUserInfo
+
 ####
 
 * create a function called getUserInfo that returns axios.get `http://localhost:8080/api/userInfo/${id}`
@@ -1125,9 +1127,9 @@ export function getUserInfo(id) {
 ```
 
 
- ####
+####
 
- ```javascript
+```javascript
 
 
 
@@ -1143,7 +1145,7 @@ export function getUserInfo (id) {
 };
 
 
- ```
+```
 
 
 
