@@ -161,11 +161,11 @@ Now, you should be able to run `webpack` without anything breaking!
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, browserHistory  } from 'react-router';
+import { Router, hashHistory  } from 'react-router';
 import routes from './config/routes';
 
 ReactDOM.render(
-    <Router history={ browserHistory }>{routes}</Router>,
+    <Router history={ hashHistory }>{routes}</Router>,
     document.getElementById('app')
 )
 
@@ -214,7 +214,6 @@ Our home component is the container component that holds our Blog-intro-containe
 
 import React from 'react';
 import BlogIntro from '../Blog-intro-container/Blog-intro-container';
-require('./Home.css');
 
 class Home extends React.Component {
 
@@ -233,17 +232,25 @@ export default Home
 
 ```javascript
 
-
 import React from 'react';
 import BlogIntro from '../Blog-intro-container/Blog-intro-container';
-require('./Home.css');
+import {getUserInfo,getPosts} from '../../utils/helpers'
 
 class Home extends React.Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            cardData: [],
+            userInfo: {},
+            intro: ''
+        }
+    }
 
     render(){
         return (
-            <div className="main-home-container">
-               <BlogIntro />
+            <div>
+                <BlogIntro />
             </div>
         )
     }
@@ -252,6 +259,7 @@ class Home extends React.Component {
 
 
 export default Home
+
 
 
 
@@ -282,8 +290,6 @@ import {usersBlogData} from '../../utils/helpers'
 import BlogImage from './Blog-image/Blog-image';
 import BlogMeta from './Blog-meta/Blog-meta';
 
-require('./Blog-intro-container.css');
-
 
 
 ```
@@ -304,7 +310,7 @@ import {usersBlogData} from '../../utils/helpers'
 import BlogImage from './Blog-image/Blog-image';
 import BlogMeta from './Blog-meta/Blog-meta';
 
-require('./Blog-intro-container.css');
+
 
 class BlogIntroContainer extends React.Component {
     constructor method goes here
@@ -325,7 +331,7 @@ import {usersBlogData} from '../../utils/helpers'
 import BlogImage from './Blog-image/Blog-image';
 import BlogMeta from './Blog-meta/Blog-meta';
 
-require('./Blog-intro-container.css');
+
 
 class BlogIntroContainer extends React.Component {
      constructor(props){}
@@ -349,14 +355,12 @@ export default BlogIntroContainer
 ####
 
 
-```
+```javascript
 
    import React from 'react';
    import {usersBlogData} from '../../utils/helpers'
    import BlogImage from './Blog-image/Blog-image';
    import BlogMeta from './Blog-meta/Blog-meta';
-
-   require('./Blog-intro-container.css');
 
    class BlogIntroContainer extends React.Component {
          constructor(props){
@@ -375,14 +379,12 @@ export default BlogIntroContainer
 ####
 
 
-```
+```javascript
 
 import React from 'react';
 import {usersBlogData} from '../../utils/helpers'
 import BlogImage from './Blog-image/Blog-image';
 import BlogMeta from './Blog-meta/Blog-meta';
-
-require('./Blog-intro-container.css');
 
 class BlogIntroContainer extends React.Component {
        constructor(props){
@@ -406,7 +408,8 @@ export default BlogIntroContainer
 * This information will be covered on day 2 so for now just copy and paste the code below under your constructor function
 
 
-```
+```javascript
+
     componentDidMount(){
     this.init()
 }
@@ -435,7 +438,7 @@ We can do this by using the javascript map method.
 * Inside the newly created div create a map method that iterates over the userBlogData, add data parameter to the map method. This map method is going to return the BlogImage and BlogMeta components
 
 
-```
+```javascript
 
   render(){
         return (
@@ -475,7 +478,7 @@ We can do this by using the javascript map method.
 
 
 
-```
+```javascript
 
   render(){
         return (
@@ -514,12 +517,10 @@ We can do this by using the javascript map method.
 
 
 
-```
+```javascript
+
   import React from 'react';
   import BlogLink from './Blog-link/Blog-link';
-  require('./Blog-image.css');
-
-
 
   const function name = (blogInfo object) => {
       return (
@@ -577,7 +578,7 @@ We can do this by using the javascript map method.
 ####
 
 
-```
+```javascript
 
  <BlogLink blogInfo={blogInfo} />
 
@@ -603,11 +604,9 @@ We can do this by using the javascript map method.
 
 
 
-```
+```javascript
 
  import React from 'react';
- require('./Blog-meta.css');
-
 
 
  const BlogMeta = ({metaInfo}) => {
@@ -642,8 +641,6 @@ We can do this by using the javascript map method.
 ```
 
  import React from 'react';
- require('./Blog-meta.css');
-
 
 
  const BlogMeta = ({metaInfo}) => {
@@ -708,13 +705,12 @@ We can do this by using the javascript map method.
 ####
 
 
-```
+```javascript
 
 import React from 'react';
 import Profile from './Profile/Profile';
 import PhotoGrid from './Image-block/Image-block';
 import {getUserInfo,getPosts} from '../../utils/helpers'
-require('./Profile-container.css');
 
 class  ProfileContainer extends React.Component {
     constructor(add props){
@@ -741,13 +737,12 @@ export default ProfileContainer
 ####
 
 
-```
+```javascript
 
 import React from 'react';
 import Profile from './Profile/Profile';
 import PhotoGrid from './Image-block/Image-block';
 import {getUserInfo,getPosts} from '../../utils/helpers'
-require('./Profile-container.css');
 
 class  ProfileContainer extends React.Component {
     constructor(props){
@@ -777,7 +772,8 @@ export default ProfileContainer
 * This information will be covered on day 2 so for now just copy and paste the code below under your constructor function
 
 
-```
+```javascript
+
     componentDidMount(){
            getUserInfo(this.props.params.userid).then(function(data){
                this.setState({
@@ -809,7 +805,7 @@ export default ProfileContainer
 
 
 
-```
+```javascript
 
 render(){
         return (
@@ -827,7 +823,7 @@ render(){
 ```
 render(){
         return (
-            <div className="main-profile-container">
+            <div>
                 <Profile user={this.state.userInfo} />
                 <PhotoGrid cardData={this.state.cardData} />
             </div>
@@ -860,10 +856,9 @@ render(){
 * Now that we have the skeleton of the component created we can display the data
 * Inside the return statement you can start to display your data by acessing the properties on the user object
 
-```
+```javascript
 
 import React from 'react';
-require('./Profile.css');
 
 
 const Profile = ({user}) => {
@@ -900,10 +895,9 @@ export default Profile
 
 
 
-```
+```javascript
 
 import React from 'react';
-require('./Profile.css');
 
 
 const Profile = ({user}) => {
@@ -964,10 +958,9 @@ export default Profile
 
 
 
-```
+```javascript
 
 import React from 'react';
-require('./Image-block.css');
 
 
 const PhotoGrid = ({cardData}) => {
@@ -1004,24 +997,22 @@ export default PhotoGrid
 
 
 
-```
+```javascript
 
 import React from 'react';
-require('./Image-block.css');
 
 
 const PhotoGrid = ({cardData}) => {
     return (
-        <div className="list-container">
-            <div className="grid-list">
+        <div>
+            <div>
                 {cardData.map((data) => {
                     return (
-                        //The Key here should be a id from our database
-                        <div className="list-group-item" key={data.id}>
-                            <div className="blog-image-container">
+                        <div key={data.id}>
+                            <div>
                                 <img src={data.link} alt={data.name}/>
                             </div>
-                            <div className="desc">
+                            <div>
                                 <p>{data.desc}</p>
                             </div>
                         </div>
@@ -1065,9 +1056,9 @@ export default PhotoGrid
 * Make sure you export this function or you will not be able to import it into another file
 
 
-```
+```javascript
 
-export let getPosts = function (){
+export function getPosts(){
  return axios.get(`http://localhost:8080/api/blogData`)
      .then(callback function {
        return data;
@@ -1082,20 +1073,20 @@ export let getPosts = function (){
 ```
  ####
 
- ```
+
+ ```javascript
 
 
-export let getPosts = function (){
- return axios.get(`http://localhost:8080/api/blogData`)
-     .then(function (data) {
-       return data;
-     })
-     .catch(function (data) {
-         return data
-     });
+export function getPosts (){
+    return axios.get(`http://localhost:8080/api/blogData`)
+        .then(function (data) {
+            return data;
+        })
+        .catch(function (data) {
+            return data
+        });
 
 };
-
 
  ```
 
@@ -1107,10 +1098,10 @@ export let getPosts = function (){
 * Make sure you export this function or you will not be able to import it into another file
 
 
-```
+```javascript
 
 
-export let getUserInfo = function (id) {
+export function getUserInfo(id) {
     return axios.get(`http://localhost:8080/api/userInfo/${id}`)
         .then(callback function {
             return data;
@@ -1126,11 +1117,11 @@ export let getUserInfo = function (id) {
 
  ####
 
- ```
+ ```javascript
 
 
 
-export let getUserInfo = function (id) {
+export function getUserInfo (id) {
     return axios.get(`http://localhost:8080/api/userInfo/${id}`)
         .then(function (data) {
             return data;
@@ -1152,10 +1143,10 @@ export let getUserInfo = function (id) {
 * Make sure you export this function or you will not be able to import it into another file
 
 
-```
+```javascript
 
 
-export let usersBlogData = function () {
+export function  usersBlogData  () {
     return axios.get(`http://localhost:8080/api/usersBlogData`)
         .then(callback function {
             return data;
@@ -1171,17 +1162,17 @@ export let usersBlogData = function () {
 
  ####
 
- ```
+ ```javascript
 
 
 
-export let usersBlogData = function () {
+export function  usersBlogData () {
     return axios.get(`http://localhost:8080/api/usersBlogData`)
         .then(function (data) {
             return data;
         })
         .catch(function (data) {
-           return data
+            return data
         });
 
 };
@@ -1218,7 +1209,7 @@ export let usersBlogData = function () {
 
 ####
 
-```
+```javascript
 
  componentDidMount(){
         invoke init
@@ -1236,7 +1227,7 @@ export let usersBlogData = function () {
 
 
 
-```
+```javascript
 
    componentDidMount(){
          this.init()
@@ -1270,7 +1261,7 @@ export let usersBlogData = function () {
 
 ####
 
-```
+```javascript
 
     componentDidMount(){
         getUserInfo(get id from url params).then(callback function with data{
@@ -1288,7 +1279,7 @@ export let usersBlogData = function () {
 ####
 
 
-```
+```javascript
 
     componentDidMount(){
         getUserInfo(this.props.params.userid).then(function(data){
@@ -1312,7 +1303,7 @@ export let usersBlogData = function () {
 
 ####
 
-```
+```javascript
 
     componentDidMount(){
            getUserInfo(this.props.params.userid).then(function(data){
@@ -1334,7 +1325,7 @@ export let usersBlogData = function () {
 ####
 
 
-```
+```javascript
 
 
     componentDidMount(){
@@ -1369,7 +1360,7 @@ export let usersBlogData = function () {
 * Below is an example of what your routes.js should look like
 
 
-```
+```javascript
 
 import React from 'react';
 import Home from '../components/Home/Home';
