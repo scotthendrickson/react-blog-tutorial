@@ -1382,8 +1382,269 @@ export default (
 
 
 
-## 2)  Redux
+## 3)  Redux
+
+### Installing Dependencies
+
+* npm install --save redux
+* npm install --save react-redux
+
+### Setting up App.js
+
+* We need to import of few things into our App.js file
+* Import Provider from react-redux
+* Import createStore from redux
+* Import reducer from ./Redux/Like
+
+### Creating the redux store in App.js
+
+* Now that we have imported our dependencies we need to create a redux store
+* Create a variable called store that is equal to createStore(reducer);
+
+
+* Now that we have created the redux store we need to implement it on the Provider component
+* The Provider component is going to wrap our Router component
+* On the Provider component that is wrapping our Router component add an attribute called store that is equal to store "dont forget your { } brackets"
+
+####
+
+```javascript
+
+ReactDOM.render(
+    <Provider store={store}>
+        <Router history={ hashHistory }>{routes}</Router>
+    </Provider>,
+    document.getElementById('app')
+)
+
+```
+
+
+### Creating the reducer
+
+* Now we need to go into our Like.js file and create the reducer that we will be dispatching actions to
+* Create a variable called LIKE set it equal to 'LIKE'
+* Create a variable called UNLIKE set it equal to 'UNLIKE'
+* Create a variable called initialState that is equal to an object that has a property called like that has a the value of 'false'
+* Now we need to actually create the reducer function
+* export a function called reducer
+* The reducer function takes state and action as parameters
+* It looks like this
+
+```javascript
+
+export function reducer(state = initialState, action = {}) {}
+
+```
+
+* Now we need to write a javascript switch statement
+* Inside the reducer function write a switch statement that takes action.type as an argument
+* The first case is LIKE that returns like: "true"
+* The second case is UNLIKE that return like: "false"
+* Make sure your default return state after your case statements
 
 
 
+####
+
+```javascript
+
+const LIKE = 'LIKE';
+const UNLIKE = 'UNLIKE';
+
+const initialState = {
+    like: "false"
+};
+
+export function reducer(state = initialState, action = {}) {
+   Write your switch statment here
+}
+
+
+```
+####
+
+```javascript
+
+const LIKE = 'LIKE';
+const UNLIKE = 'UNLIKE';
+
+const initialState = {
+    like: "false"
+};
+
+export function reducer(state = initialState, action = {}) {
+    switch (action.type) {
+        case LIKE:
+            return {
+                like:"true"
+            };
+        case UNLIKE:
+            return {
+                like: "false"
+            };
+
+        default:
+            return state;
+    }
+}
+
+
+
+```
+
+
+### Creating the actions
+
+* Inside the Like.js file under the reducer function we need to write two actions
+* The first is likeBlog function that returns the type: LIKE
+* The second is a unLikeBlog function that returns the type: UNLIKE
+
+
+####
+
+```javascript
+
+export function likeBlog() {
+    return {
+        type: LIKE
+    };
+}
+
+export function unLikeBlog() {
+    return {
+        type: UNLIKE
+    };
+}
+
+```
+
+
+
+
+### Implementing redux in Profile-container.js
+
+* Import connect from 'react-redux'
+* Import likeBlog and unLikeBlog from Like.js
+* Under our component we need to add a few things to get redux to work
+* Write a function called stateToProps that takes state as a parameter and returns a property called like that has a value of state.like
+* Under the stateToProps function create a variable called connectedProfileContainer that is equal to connect(stateToProps, {likeBlog: likeBlog, unLikeBlog: unLikeBlog})(ProfileContainer)
+* Change the export default from ProfileContainer to connectedProfileContainer
+
+
+####
+
+```javascript
+
+function stateToProps(state){
+    return {
+        like: state.like
+    }
+}
+
+
+
+var connectedProfileContainer = connect(stateToProps, {likeBlog: likeBlog, unLikeBlog: unLikeBlog})(ProfileContainer)
+
+export default connectedProfileContainer
+
+
+
+```
+
+
+### Passing props to Profile
+
+* Now that we need to pass some props to our Profile component
+
+* On the profile component inside the ProfileContainer add these attributes like={this.props.like}, likeBlog={this.props.likeBlog}, unLikeBlog={this.props.unLikeBlog}
+
+<Profile user={this.state.userInfo} like={this.props.like} likeBlog={this.props.likeBlog} unLikeBlog={this.props.unLikeBlog}/>
+
+
+
+
+
+
+### Invoking likeBlog and unLikeBlog
+
+* Inside the the Profile component create two buttons
+* The first button should invoke likeBlog onClick
+* The second button should invoke unLikeBlog onClick
+* Add a h3 tag that will display the like property being passed in as props from redux
+* You should now be able to change the like to false or true onClick
+
+####
+
+```javascript
+
+
+const Profile = ({user, like, likeBlog, unLikeBlog}) => {
+    return (
+        <div>
+            <div>
+                <img src={user.image} alt={user.username}/>
+            </div>
+            <div>
+                <h1>{user.username}</h1>
+                <p>{user.intro}</p>
+                <div>
+                    <h1>{user.likeCount}</h1>
+                    <h3>Like : {like}</h3>
+                    <button onClick={Invoke the likeBlog}> LIKE </button>
+                    <button onClick={Invoke the unlikeBlog}> UNLIKE </button>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+
+```
+####
+
+```javascript
+
+
+const Profile = ({user, like, likeBlog, unLikeBlog}) => {
+    return (
+        <div>
+            <div>
+                <img src={user.image} alt={user.username}/>
+            </div>
+            <div>
+                <h1>{user.username}</h1>
+                <p>{user.intro}</p>
+                <div>
+                    <h1>{user.likeCount}</h1>
+                    <h3>Like : {like}</h3>
+                    <button onClick={()=>likeBlog()}> LIKE </button>
+                    <button onClick={()=>unLikeBlog()}> UNLIKE </button>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+
+```
+
+
+## Black Diamond: Local Storage
+
+### Match the styles to the designs
+### Change the color of the heqrt when a blog is liked and update the like count
+
+
+Good luck!
+
+
+## Contributions
+If you see a problem or a typo, please fork, make the necessary changes, and create a pull request so we can review your changes and merge them into the master repo and branch.
+
+## Copyright
+
+© DevMountain LLC, 2016. Unauthorized use and/or duplication of this material without express and written permission from DevMountain, LLC is strictly prohibited. Excerpts and links may be used, provided that full and clear credit is given to DevMountain with appropriate and specific direction to the original content.
+
+<img src="https://devmounta.in/img/logowhiteblue.png" width="250">
 
