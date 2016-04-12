@@ -1630,10 +1630,10 @@ const Profile = ({user, like, likeBlog, unLikeBlog}) => {
 ```
 
 
-## Black Diamond: Local Storage
+## Black Diamond:
 
-### Match the styles to the designs
-### Change the color of the heqrt when a blog is liked and update the like count
+* Match the styles to the designs
+* Change the color or the heart icon when a blog is liked and unliked also update the count
 
 
 Good luck!
