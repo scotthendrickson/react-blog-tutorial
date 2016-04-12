@@ -9,12 +9,14 @@
 
 ### Blog-Feed
 
+####
+
 <img src="http://i.imgur.com/oMwsnug.jpg" width="100%" height="100%"></img>
 
 
 
 ### Blog-Profile
-
+####
 <img src="http://i.imgur.com/KV9PVdC.jpg" width="100%" height="100%"></img>
 
 ####
@@ -24,6 +26,8 @@
 ## 1) Setting Up Our Project
 
 ### Setting Up Our Project
+
+####
 
 * You may want to take a moment to get your editor comfortable with JSX.
   * For Atom, `apm install react language-babel`.
@@ -98,7 +102,7 @@ JS, and one that keep organization very logical and convenient as an app grows.
 * You'll want to `npm init` right away.
 
 ### Smart/Container vs Dumb/Presentational Components
-
+####
 We'll be building two types of components.
 
 * Smart (or Container) components:
@@ -115,11 +119,12 @@ We're using this convention because it makes our app easier to reason about, mak
 more reusable, and keeps most of our logic in the Smart components.
 
 ### Npm Install
+####
 * Run npm install to get all the dependencies we need
 
 
 ### Webpack
-
+####
 Webpack is a build tool primarily intended for front-end code.
 There are other systems you can use to work with React, but it's worth taking the time to learn Webpack.
 
@@ -155,6 +160,7 @@ Now, you should be able to run `webpack` without anything breaking!
 
 
 ### App (Entry Point)
+####
 
 * Our `App.js` will serve as the entry point for all of our code.
 * You'll want to set this up to import everything else.
@@ -179,7 +185,7 @@ ReactDOM.render(
 
 
 ### Running the project
-
+####
 * As you are building the application you will need to be running webpack, http-server and nodemon
 * Webpack is used to bundle your javascript
 * nodemon is to run the server
@@ -192,7 +198,7 @@ ReactDOM.render(
 ## 1) Blog-feed
 
 ### Blog-Feed
-
+####
 <img src="http://i.imgur.com/oMwsnug.jpg" width="100%" height="100%"></img>
 
 
@@ -677,6 +683,7 @@ We can do this by using the javascript map method.
 
 
 ### Blog-Profile
+####
 
 <img src="http://i.imgur.com/KV9PVdC.jpg" width="100%" height="100%"></img>
 
@@ -1045,7 +1052,7 @@ export default PhotoGrid
 ## 2) Axios
 
 ### Helpers
-
+####
 * We are going to write a couple helper functions that we are going to use to get our data from our api
 * Open helpers.js located in the utils folder
 * import axios from 'axios'
@@ -1053,7 +1060,7 @@ export default PhotoGrid
 
 
 ### getPosts
-
+####
 * create a function called getPosts that returns axios.get `http://localhost:8080/api/blogData`
 * Make sure you export this function or you will not be able to import it into another file
 
@@ -1095,6 +1102,7 @@ export function getPosts (){
 
 
 ### getUserInfo
+####
 
 * create a function called getUserInfo that returns axios.get `http://localhost:8080/api/userInfo/${id}`
 * Make sure you export this function or you will not be able to import it into another file
@@ -1140,6 +1148,7 @@ export function getUserInfo (id) {
 
 
 ### usersBlogData
+####
 
 * create a function called usersBlogData that returns axios.get `http://localhost:8080/api/usersBlogData`
 * Make sure you export this function or you will not be able to import it into another file
@@ -1187,11 +1196,11 @@ export function  usersBlogData () {
 ## 2) Importing Helper Functions
 
 ### Import Helpers in BlogIntroContainer
-
+####
 * inside the blog-intro-container component import the usersBlogData helper
 
 ### Import Helpers in ProfileContainer
-
+####
 * inside the Profile-container component import {getUserInfo,getPosts} helpers
 
 
@@ -1201,7 +1210,7 @@ export function  usersBlogData () {
 ## 2) Life Cycle
 
 ### componentDidMount BlogIntroContainer
-
+####
 * We need to make a api request to get the userBlogData but we dont want to do this until the component has mounted.
 * Write a componentDidMount method that will invoke this.init
 * Write a init method, inside this init method invoke the usersBlogData
@@ -1249,13 +1258,13 @@ export function  usersBlogData () {
 
 
 ### componentDidMount ProfileContainer
-
+####
 * We need to make two api requests but we don't want to do this until the component has mounted.
 * Write a componentDidMount method that will invoke the getUserInfo and getPosts helper functions
 
 
 ### getUserInfo
-
+####
 * The getUserInfo function needs to get the user id from the url params.
 * After the getUserInfo function has been invoked  .then syntax to resolve the promise. Inside the promise callback set the state using this.setState
 * Inside this.setState add a property called userInfo with the value being the data from the promise callback
@@ -1298,7 +1307,7 @@ export function  usersBlogData () {
 ```
 
 ### getPosts
-
+####
 * After the getPosts function has been invoked  .then syntax to resolve the promise. Inside the promise callback set the state using this.setState
 * Inside this.setState add a property called cardData with the value being the data from the promise callback
 
@@ -1352,6 +1361,8 @@ export function  usersBlogData () {
 
 ## 2)  Routing
 
+### Setting up router
+####
 
 * Routing in React is a really vast topic, and there are a _lot_ of different ways to go about it.
 * For this project, we'll use `react-router`.
@@ -1387,19 +1398,19 @@ export default (
 ## 3)  Redux
 
 ### Installing Dependencies
-
+####
 * npm install --save redux
 * npm install --save react-redux
 
 ### Setting up App.js
-
+####
 * We need to import of few things into our App.js file
 * Import Provider from react-redux
 * Import createStore from redux
 * Import reducer from ./Redux/Like
 
 ### Creating the redux store in App.js
-
+####
 * Now that we have imported our dependencies we need to create a redux store
 * Create a variable called store that is equal to createStore(reducer);
 
@@ -1423,7 +1434,7 @@ ReactDOM.render(
 
 
 ### Creating the reducer
-
+####
 * Now we need to go into our Like.js file and create the reducer that we will be dispatching actions to
 * Create a variable called LIKE set it equal to 'LIKE'
 * Create a variable called UNLIKE set it equal to 'UNLIKE'
@@ -1497,7 +1508,7 @@ export function reducer(state = initialState, action = {}) {
 
 
 ### Creating the actions
-
+####
 * Inside the Like.js file under the reducer function we need to write two actions
 * The first is likeBlog function that returns the type: LIKE
 * The second is a unLikeBlog function that returns the type: UNLIKE
@@ -1525,7 +1536,7 @@ export function unLikeBlog() {
 
 
 ### Implementing redux in Profile-container.js
-
+####
 * Import connect from 'react-redux'
 * Import likeBlog and unLikeBlog from Like.js
 * Under our component we need to add a few things to get redux to work
@@ -1556,7 +1567,7 @@ export default connectedProfileContainer
 
 
 ### Passing props to Profile
-
+####
 * Now that we need to pass some props to our Profile component
 
 * On the profile component inside the ProfileContainer add these attributes like={this.props.like}, likeBlog={this.props.likeBlog}, unLikeBlog={this.props.unLikeBlog}
@@ -1569,7 +1580,7 @@ export default connectedProfileContainer
 
 
 ### Invoking likeBlog and unLikeBlog
-
+####
 * Inside the the Profile component create two buttons
 * The first button should invoke likeBlog onClick
 * The second button should invoke unLikeBlog onClick
@@ -1633,10 +1644,16 @@ const Profile = ({user, like, likeBlog, unLikeBlog}) => {
 
 
 ## Black Diamond:
-
 ### Match the styles to the designs
-### Change the color or the heart icon when a blog is liked and unliked also update the count
+####
+* Look at the designs that are included in this readme and match the styles
 
+
+### Change the color or the heart icon when a blog is liked and unliked also update the count
+####
+
+* Update the color of the heart icon if a user likes the blog or unLikes the blog
+* Update the count if the user likes or unLikes the blog
 
 Good luck!
 
