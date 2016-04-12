@@ -1173,9 +1173,9 @@ export function  usersBlogData  () {
 ```
 
 
- ####
+####
 
- ```javascript
+```javascript
 
 
 
@@ -1191,11 +1191,11 @@ export function  usersBlogData () {
 };
 
 
- ```
+```
 
 
 
-## 2) Importing Helper Functions
+### Importing Helper Functions
 
 ### Import Helpers in BlogIntroContainer
 ####
