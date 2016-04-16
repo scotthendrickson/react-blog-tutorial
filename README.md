@@ -32,7 +32,7 @@
 * You may want to take a moment to get your editor comfortable with JSX.
   * For Atom, `apm install react language-babel`.
   * For Sublime Text, search for `Babel` in Package Control.
-  * For VS Code, `tsd install react-global` or `typings install --ambient react-global`
+  * For VS Code, with admin rights`npm install typings -global` then `typings install --ambient react-global`
 * Some JSX gotchas:
   * Don't try to comment your JSX.
   * Don't try `if` statements in your JSX.
